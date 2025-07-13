@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infographic: A Visual Guide to Growth Stocks</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Brilliant Blues (Professional & Vibrant) -->
+    <!-- Application Structure Plan: The infographic follows a narrative structure designed to educate a novice investor. It starts with a high-level definition (Hero), breaks down core concepts ('The DNA of Growth'), presents a direct comparison ('Growth vs. Value'), visualizes key identification metrics ('Investor's Toolkit'), shows performance patterns ('Performance in Cycles'), balances the view ('Risks & Rewards'), and concludes with concrete examples. This logical flow guides the user from 'what' to 'why' and 'how', using visual aids to simplify complex financial topics. -->
+    <!-- Visualization & Content Choices: 
+        - Report Info: Core definition -> Goal: Inform -> Viz: Large, bold text (big number). Justification: High impact for the main idea.
+        - Report Info: Reinvestment of profits -> Goal: Inform -> Viz: Chart.js Donut Chart. Justification: Clearly shows the simple proportion of reinvestment vs. dividends.
+        - Report Info: Growth vs. Value comparison -> Goal: Compare -> Viz: Chart.js Bar Chart. Justification: Provides a direct visual comparison of key opposing metrics like P/E ratios.
+        - Report Info: Performance across economic cycles -> Goal: Change -> Viz: Chart.js Area Chart. Justification: Effectively shows performance trends over time during bull vs. bear markets.
+        - Report Info: Qualitative factors -> Goal: Organize -> Viz: HTML/CSS Flowchart. Justification: Visually represents a process/hierarchy without using SVG/Mermaid.
+        - All other data points are visualized using appropriate charts (bar, line) or styled HTML as guided by the 'Infographic Chart Selection Guide'.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #F0F4F8; color: #102A43; }
+        .chart-container { position: relative; width: 100%; max-width: 600px; margin-left: auto; margin-right: auto; height: 350px; max-height: 400px; }
+        .header-bg { background-color: #057AF7; }
+        .accent-color { color: #057AF7; }
+        .card { background-color: white; border-radius: 0.75rem; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.05); padding: 1.5rem; }
+    </style>
+</head>
+<body>
+
+    <header class="header-bg text-white text-center py-12 px-4">
+        <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight">A Visual Guide to Growth Stocks</h1>
+        <p class="mt-4 max-w-2xl mx-auto text-lg text-blue-100">Investing in companies poised for rapid expansion. This infographic breaks down what they are, how they work, and what to watch out for.</p>
+    </header>
+
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-16">
+
+        <section id="definition">
+            <div class="card text-center">
+                <h2 class="text-2xl font-bold accent-color mb-4">What is a Growth Stock?</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">It's a share in a company expected to grow its revenue and earnings much faster than the average company in its industry or the overall market. The main goal for investors is a significant increase in the stock's price over time, known as <span class="font-bold">capital appreciation</span>.</p>
+                <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div class="text-left">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">The Engine of Growth: Reinvestment</h3>
+                        <p class="text-gray-600">Instead of paying out profits to shareholders, growth companies typically reinvest their earnings back into the business to fuel innovation, expand operations, and capture more market share. This strategy sacrifices short-term income for the potential of long-term exponential growth.</p>
+                    </div>
+                    <div class="chart-container h-64 md:h-80">
+                        <canvas id="reinvestmentChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="characteristics">
+            <h2 class="text-3xl font-bold text-center mb-8">The DNA of a Growth Company</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="card text-center">
+                    <div class="text-4xl mb-3">📈</div>
+                    <h3 class="text-xl font-bold mb-2">High Valuations</h3>
+                    <p class="text-gray-600 text-sm">Often trade at a high Price-to-Earnings (P/E) ratio, signaling that investors are paying a premium for future growth potential.</p>
+                </div>
+                <div class="card text-center">
+                    <div class="text-4xl mb-3">💡</div>
+                    <h3 class="text-xl font-bold mb-2">Innovation-Driven</h3>
+                    <p class="text-gray-600 text-sm">Typically found in dynamic sectors like Tech, AI, and Biotech, where they disrupt markets with new products or technologies.</p>
+                </div>
+                <div class="card text-center">
+                    <div class="text-4xl mb-3">🏰</div>
+                    <h3 class="text-xl font-bold mb-2">Competitive "Moat"</h3>
+                    <p class="text-gray-600 text-sm">Possess a strong advantage, like proprietary technology or brand loyalty, that protects them from competitors.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="growth-vs-value">
+            <h2 class="text-3xl font-bold text-center mb-8">Growth vs. Value Investing</h2>
+            <p class="text-center max-w-3xl mx-auto text-gray-600 mb-12">These are two primary investment philosophies. Growth focuses on future potential, while value seeks companies that appear undervalued by the market. The chart below highlights one of their key statistical differences.</p>
+            <div class="card">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Key Distinctions</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <h4 class="font-semibold accent-color">Growth Stocks</h4>
+                                <ul class="list-disc list-inside text-gray-600 text-sm space-y-1 mt-1">
+                                    <li>Focus: Capital Appreciation</li>
+                                    <li>Dividends: Rare</li>
+                                    <li>Risk Profile: Higher Volatility</li>
+                                    <li>Example Industries: Technology, Biotech</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-500">Value Stocks</h4>
+                                <ul class="list-disc list-inside text-gray-600 text-sm space-y-1 mt-1">
+                                    <li>Focus: Undervaluation Correction</li>
+                                    <li>Dividends: Common</li>
+                                    <li>Risk Profile: Lower Volatility</li>
+                                    <li>Example Industries: Financials, Utilities</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                         <canvas id="peRatioChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="toolkit">
+            <h2 class="text-3xl font-bold text-center mb-8">The Investor's Toolkit: Identifying Potential</h2>
+            <p class="text-center max-w-3xl mx-auto text-gray-600 mb-12">Identifying growth stocks involves looking at both financial numbers and the quality of the business itself. A high Return on Equity (ROE) is a key indicator of management's effectiveness.</p>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="card">
+                    <h3 class="text-xl font-bold text-center mb-4">By the Numbers: Key Metrics</h3>
+                    <div class="chart-container">
+                        <canvas id="metricsChart"></canvas>
+                    </div>
+                    <p class="text-xs text-center text-gray-500 mt-2">A high Return on Equity (ROE) shows a company is efficient at generating profit from shareholder money. Growth investors often look for an ROE of 15% or higher.</p>
+                </div>
+                <div class="card">
+                    <h3 class="text-xl font-bold text-center mb-4">Beyond the Numbers: Qualitative Strengths</h3>
+                    <div class="space-y-4 mt-8 flex flex-col items-center">
+                        <div class="w-full max-w-sm bg-blue-50 p-3 rounded-lg text-center shadow-sm">
+                            <h4 class="font-bold text-blue-800">Visionary Leadership</h4>
+                        </div>
+                        <div class="text-2xl text-blue-300">▼</div>
+                        <div class="w-full max-w-sm bg-blue-50 p-3 rounded-lg text-center shadow-sm">
+                            <h4 class="font-bold text-blue-800">Market Disruption & Large Target Market</h4>
+                        </div>
+                        <div class="text-2xl text-blue-300">▼</div>
+                        <div class="w-full max-w-sm bg-blue-50 p-3 rounded-lg text-center shadow-sm">
+                            <h4 class="font-bold text-blue-800">Durable Competitive Advantage (The "Moat")</h4>
+                        </div>
+                    </div>
+                    <p class="text-xs text-center text-gray-500 mt-4">This flow represents the foundation of a sustainable growth company, from leadership to its market position and protective advantages.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="cycles">
+            <h2 class="text-3xl font-bold text-center mb-8">Performance Across Economic Cycles</h2>
+            <p class="text-center max-w-3xl mx-auto text-gray-600 mb-12">Growth stocks are sensitive to the economic climate. They tend to soar during good times but can fall sharply during downturns due to their reliance on high expectations and investor confidence.</p>
+             <div class="card">
+                <div class="chart-container md:h-[400px]">
+                    <canvas id="cycleChart"></canvas>
+                </div>
+                <p class="text-xs text-center text-gray-500 mt-4">The chart illustrates the typical amplified performance of growth stocks. They often outperform during bull markets (economic expansion) but underperform during bear markets (economic contraction) compared to the broader market.</p>
+            </div>
+        </section>
+
+        <section id="risks-rewards">
+             <h2 class="text-3xl font-bold text-center mb-8">The Balancing Act: Risks vs. Rewards</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="card border-l-4 border-green-400">
+                    <h3 class="text-2xl font-bold text-green-600 mb-4">Rewards</h3>
+                    <ul class="space-y-3 text-gray-700">
+                        <li class="flex items-start"><span class="text-green-500 mr-3 mt-1">✓</span>Significant potential for capital appreciation.</li>
+                        <li class="flex items-start"><span class="text-green-500 mr-3 mt-1">✓</span>Investing in innovative, future-shaping companies.</li>
+                        <li class="flex items-start"><span class="text-green-500 mr-3 mt-1">✓</span>Powerful long-term returns from compounding growth.</li>
+                    </ul>
+                </div>
+                <div class="card border-l-4 border-red-400">
+                    <h3 class="text-2xl font-bold text-red-600 mb-4">Risks</h3>
+                    <ul class="space-y-3 text-gray-700">
+                        <li class="flex items-start"><span class="text-red-500 mr-3 mt-1">✗</span>Higher volatility and sensitivity to market news.</li>
+                        <li class="flex items-start"><span class="text-red-500 mr-3 mt-1">✗</span>Risk of overpaying for growth that doesn't materialize.</li>
+                        <li class="flex items-start"><span class="text-red-500 mr-3 mt-1">✗</span>Lack of dividend income to cushion downturns.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <section id="examples">
+            <h2 class="text-3xl font-bold text-center mb-8">Growth in Action: Real-World Examples</h2>
+            <p class="text-center max-w-3xl mx-auto text-gray-600 mb-12">Growth can come from different sources, from technological breakthroughs to dominating a niche market. Below are illustrative examples of companies and their long-term growth drivers.</p>
+            <div class="card md:col-span-2">
+                <div class="chart-container md:h-[400px]">
+                    <canvas id="examplesChart"></canvas>
+                </div>
+                <p class="text-xs text-center text-gray-500 mt-4">This chart shows illustrative growth paths. Nvidia represents tech disruption, Monster Beverage shows a consumer trend, and Tractor Supply Co. highlights niche market dominance. Past performance is not indicative of future results.</p>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="mt-16 py-8 bg-gray-800 text-center text-white">
+        <p class="text-gray-300">This infographic is for educational purposes only and not financial advice.</p>
+        <p class="text-xs text-gray-500 mt-2">Data synthesized from "Growth Stocks in the USA" report.</p>
+    </footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    
+    const wrapLabel = (str) => {
+        if (str.length > 16) {
+            const words = str.split(' ');
+            const lines = [];
+            let currentLine = '';
+            for (const word of words) {
+                if ((currentLine + word).length > 16) {
+                    lines.push(currentLine.trim());
+                    currentLine = '';
+                }
+                currentLine += word + ' ';
+            }
+            lines.push(currentLine.trim());
+            return lines;
+        }
+        return str;
+    };
+
+    const tooltipTitleCallback = (tooltipItems) => {
+        const item = tooltipItems[0];
+        let label = item.chart.data.labels[item.dataIndex];
+        return Array.isArray(label) ? label.join(' ') : label;
+    };
+
+    const commonChartOptions = {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                position: 'top',
+                labels: {
+                    font: { size: 12 },
+                    color: '#4A5568'
+                }
+            },
+            tooltip: {
+                callbacks: { title: tooltipTitleCallback },
+                backgroundColor: '#102A43',
+                titleColor: '#F0F4F8',
+                bodyColor: '#BCCCDC',
+                boxPadding: 4,
+                cornerRadius: 4
+            }
+        },
+        scales: {
+            y: {
+                beginAtZero: true,
+                ticks: { color: '#4A5568' },
+                grid: { color: '#E0E7FF' }
+            },
+            x: {
+                ticks: { color: '#4A5568' },
+                grid: { display: false }
+            }
+        }
+    };
+    
+    new Chart(document.getElementById('reinvestmentChart').getContext('2d'), {
+        type: 'doughnut',
+        data: {
+            labels: ['Profits Reinvested', 'Dividends Paid'],
+            datasets: [{
+                data: [95, 5],
+                backgroundColor: ['#057AF7', '#BCCCDC'],
+                borderColor: ['#F0F4F8'],
+                borderWidth: 4,
+                hoverOffset: 4
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            cutout: '70%',
+            plugins: {
+                legend: { position: 'bottom' },
+                tooltip: {
+                    callbacks: {
+                        title: tooltipTitleCallback,
+                        label: function (context) {
+                            return `${context.label}: ${context.raw}%`;
+                        }
+                    }
+                },
+                 title: {
+                    display: true,
+                    text: 'Typical Profit Allocation for a Growth Company',
+                    color: '#102A43',
+                    font: { size: 14 }
+                }
+            }
+        }
+    });
+
+    new Chart(document.getElementById('peRatioChart').getContext('2d'), {
+        type: 'bar',
+        data: {
+            labels: ['Growth Stock', 'Value Stock'],
+            datasets: [{
+                label: 'Illustrative P/E Ratio',
+                data: [40, 12],
+                backgroundColor: ['#057AF7', '#4A5568'],
+                borderRadius: 4
+            }]
+        },
+        options: {
+            ...commonChartOptions,
+            plugins: { ...commonChartOptions.plugins, legend: { display: false }, title: { display: true, text: 'Valuation Comparison: P/E Ratio' } }
+        }
+    });
+    
+    new Chart(document.getElementById('metricsChart').getContext('2d'), {
+        type: 'bar',
+        data: {
+            labels: ['Benchmark for Growth Stock', 'Average Company'],
+            datasets: [{
+                label: 'Return on Equity (ROE)',
+                data: [20, 10],
+                backgroundColor: ['#057AF7', '#BCCCDC'],
+                borderRadius: 4
+            }]
+        },
+        options: {
+            ...commonChartOptions,
+            plugins: { ...commonChartOptions.plugins, legend: { display: false }, title: { display: true, text: 'Efficiency: Return on Equity (%)' } }
+        }
+    });
+
+    new Chart(document.getElementById('cycleChart').getContext('2d'), {
+        type: 'line',
+        data: {
+            labels: ['Start of Cycle', 'Mid-Expansion', 'Peak', 'Contraction', 'Trough', 'Early Recovery'],
+            datasets: [{
+                label: 'Growth Stocks Performance',
+                data: [100, 150, 160, 90, 80, 130],
+                borderColor: '#057AF7',
+                backgroundColor: 'rgba(5, 122, 247, 0.1)',
+                fill: true,
+                tension: 0.3
+            }, {
+                label: 'Broad Market Performance',
+                data: [100, 120, 125, 105, 100, 115],
+                borderColor: '#4A5568',
+                backgroundColor: 'rgba(74, 85, 104, 0.1)',
+                fill: true,
+                tension: 0.3
+            }]
+        },
+        options: {
+            ...commonChartOptions,
+            plugins: { ...commonChartOptions.plugins, title: { display: true, text: 'Illustrative Performance Through an Economic Cycle' } }
+        }
+    });
+
+    new Chart(document.getElementById('examplesChart').getContext('2d'), {
+        type: 'line',
+        data: {
+            labels: ['Year 0', 'Year 5', 'Year 10', 'Year 15', 'Year 20'],
+            datasets: [{
+                label: wrapLabel('Tech Disruption (e.g., Nvidia)'),
+                data: [1, 10, 50, 200, 800],
+                borderColor: '#057AF7',
+                tension: 0.1,
+                fill: false
+            }, {
+                label: wrapLabel('Consumer Trend (e.g., Monster Beverage)'),
+                data: [1, 8, 30, 150, 600],
+                borderColor: '#36A2EB',
+                tension: 0.1,
+                fill: false
+            }, {
+                label: wrapLabel('Niche Market Dominance (e.g., Tractor Supply)'),
+                data: [1, 5, 20, 80, 400],
+                borderColor: '#FF6384',
+                tension: 0.1,
+                fill: false
+            }]
+        },
+        options: {
+            ...commonChartOptions,
+            plugins: { ...commonChartOptions.plugins, title: { display: true, text: 'Illustrative Long-Term Growth Paths' } }
+        }
+    });
+});
+</script>
+
+</body>
+</html>
